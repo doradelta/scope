@@ -21,7 +21,7 @@ mainnet = []
 staging = []
 
 [dependencies]
-anchor-lang = ">= 0.28.0"
+anchor-lang = "=0.28.0"
 solana-program = ">= 1.16.18"
 num_enum = ">0.5.7"
 cfg-if = "1.0.0"

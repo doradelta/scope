@@ -10,9 +10,8 @@ pub use anchor_lang;
 use anchor_lang::prelude::*;
 pub use num_enum;
 use num_enum::{TryFromPrimitive, TryFromPrimitiveError};
-use program_id::PROGRAM_ID;
 
-declare_id!(PROGRAM_ID);
+declare_id!("HFn8GnPADiny6XqUoWE8uRPPxb29ikn4yTuPa9MF2fWJ");
 
 // Note: Need to be directly integer value to not confuse the IDL generator
 pub const MAX_ENTRIES_U16: u16 = 512;
