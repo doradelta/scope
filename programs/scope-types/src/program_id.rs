@@ -1,3 +1,5 @@
+use std::str::FromStr;
+
 use anchor_lang::prelude::Pubkey;
 use solana_program::pubkey;
 
@@ -27,7 +29,7 @@ compile_error!("'skip_price_validation' and 'staging' features are mutually excl
 
 cfg_if::cfg_if! {
     if #[cfg(feature = "mainnet")] {
-        pub const PROGRAM_ID:Pubkey = pubkey!("HFn8GnPADiny6XqUoWE8uRPPxb29ikn4yTuPa9MF2fWJ");
+        pub const PROGRAM_ID:Pubkey = anchor_lang::prelude::Pubkey::from_str("HFn8GnPADiny6XqUoWE8uRPPxb29ikn4yTuPa9MF2fWJ").unwrap();
     }
     else if #[cfg(feature = "staging")] {
         pub const PROGRAM_ID:Pubkey = pubkey!("scpStzYvKzE7DHwsGMP5XLhcMTuLr3feoiC9mJ3yHr5");
