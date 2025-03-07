@@ -1,57 +1,28 @@
 [package]
-name = "kamino_lending"
-version = "1.11.0"
-description = "Kamino lending Solana program"
+name = "scope-types"
+version = "1.0.0"
+description = "Types for Scope"
+repository = "https://github.com/Kamino-Finance/scope"
+authors = ["Scope Maintainers <dev@hubbleprotocol.io>"]
 edition = "2021"
-license = "BUSL-1.1"
+license = "Apache-2.0"
 publish = false
 
 [lib]
+path = "src/lib.rs"
 crate-type = ["cdylib", "lib"]
-name = "kamino_lending"
 
 [features]
-no-entrypoint = []
-no-idl = []
-no-log-ix-name = []
-cpi = ["no-entrypoint"]
-default = []
-serde = ["dep:serde", "fixed/serde-str"]
+# If none of the following is set, one will be selected based on env $CLUSTER variable
+# If $CLUSTER is not set either, default will be mainnet
+devnet = []
+localnet = []
+mainnet = []
 staging = []
-idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
-tracing = ["dep:tracing"]
-serialize_caps_interval_values = []
 
 [dependencies]
 anchor-lang = ">= 0.28.0"
 solana-program = ">= 1.16.18"
-anchor-spl = "0.30.0"
-solana-security-txt = "1.1.1"
-
-bytemuck = "1.19.0"
-
-scope = { git = "https://github.com/doradelta/scope.git", branch = "master", package = "scope-types" }
-
-pyth-solana-receiver-sdk = "0.3.1"
-
-derivative = "2.2.0"
-num_enum = "0.7.0"
-
-static_assertions = "1.1.0"
-
-derive_builder = "0.13.0"
-
-fixed = "1.23.1"
-fixed-macro = "1.1"
-uint = "0.9.5"
-bitflags = "2.4.1"
-
-serde = { version = "1", features = ["derive"], optional = true }
-tracing = { version = "0.1.40", optional = true }
-
-[patch.crates-io]
-# Unified solana-program and solana-pubkey to the same source
-solana-program = { git = "https://github.com/solana-labs/solana.git", tag = "v1.18.26" }
-solana-pubkey = { git = "https://github.com/solana-labs/solana.git", tag = "v1.18.26" }
-spl-token-2022 = { git = "https://github.com/solana-labs/solana-program-library.git", tag = "token-2022-1.0.0" }
-spl-memo = { git = "https://github.com/solana-labs/solana-program-library.git", tag = "spl-memo-5.0.0" }
+num_enum = ">0.5.7"
+cfg-if = "1.0.0"
+bytemuck = { version = "1.14.0", features = ["min_const_generics", "derive"] }
